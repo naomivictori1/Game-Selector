@@ -6,20 +6,7 @@ import ModalView from './ModalView';
 import GameEntry from '../GameEntry';
 
 function VideoGameSection() {
-	const [isModalVisible, setIsModalVisible] = useState(false);
 	const [currentVideoID, setCurrentVideoID] = useState('');
-
-	const showModal = () => {
-		setIsModalVisible(true);
-	};
-
-	const handleClose = () => {
-		setIsModalVisible(false);
-	};
-
-	const handleCancel = () => {
-		setIsModalVisible(false);
-	};
 
 	const chooseGame = () => {
 		var randomGameTitle = [
@@ -82,16 +69,15 @@ function VideoGameSection() {
 								imgURL={videogame.imgURL}
 								description={videogame.console}
 								videoID={videogame.videoID}
-								setCurrentVideoID={setCurrentVideoID}
-								showModal={showModal}
+								showModal={setCurrentVideoID}
 							/>
 						</Col>
 					))}
 					<ModalView
 						videoID={currentVideoID}
-						handleClose={handleClose}
-						handleCancel={handleCancel}
-						isModalVisible={isModalVisible}
+						handleClose={() => setCurrentVideoID('')}
+						handleCancel={() => setCurrentVideoID('')}
+						isModalVisible={!!currentVideoID}
 					/>
 				</Row>
 			</div>
