@@ -24,10 +24,7 @@ function GameEntry(props) {
 							borderColor: '#fff',
 							backgroundColor: '#e6544f',
 						}}
-						onClick={() => {
-							props.setCurrentVideoID(props.videoID);
-							props.showModal();
-						}}
+						onClick={() => props.showModal(props.videoID)}
 					>
 						Click for trailer
 					</Button>
